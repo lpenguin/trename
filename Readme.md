@@ -37,13 +37,13 @@ pip install https://github.com/lpenguin/trename/archive/master.zip
 usage: trename [-h] [-v] [-n] [-D] from_tpl to_tpl [files [files ...]]
 
 positional arguments:
-  from_tpl       Template for old file name
-  to_tpl         Template for new file name
-  files          Files that will be renamed
+  from_tpl       template for old file name
+  to_tpl         template for new file name
+  files          tiles that will be renamed
 
 optional arguments:
   -h, --help     show this help message and exit
-  -v, --verbose  Print old name and new name for each file
-  -n, --dry-run  Print names, do not actually rename
-  -D, --debug    Print debug information
+  -v, --verbose  print old name and new name for each file
+  -n, --dry-run  print names, do not actually rename
+  -D, --debug    print debug information
 ```

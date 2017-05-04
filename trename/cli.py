@@ -5,12 +5,12 @@ from os import rename
 
 def main():
     p = argparse.ArgumentParser(prog='trename')
-    p.add_argument('-v', '--verbose', action='store_true', help='Print old name and new name for each file ')
-    p.add_argument('-n', '--dry-run', action='store_true', help='Print names, do not actually rename')
-    p.add_argument('-D', '--debug', action='store_true', help='Print debug information')
-    p.add_argument('from_tpl', help='Template for old file name')
-    p.add_argument('to_tpl', help='Template for new file name')
-    p.add_argument('files', nargs='*', help='Files that will be renamed')
+    p.add_argument('-v', '--verbose', action='store_true', help='print old name and new name for each file ')
+    p.add_argument('-n', '--dry-run', action='store_true', help='print names, do not actually rename')
+    p.add_argument('-D', '--debug', action='store_true', help='print debug information')
+    p.add_argument('from_tpl', help='template for old file name')
+    p.add_argument('to_tpl', help='template for new file name')
+    p.add_argument('files', nargs='*', help='files that will be renamed')
 
     args = p.parse_args()
 
