@@ -25,9 +25,15 @@
 16052_ACAGTG_boston_R1.txt
 
 ```
-
+## Installation
+```bash
+python setup.py install
+# or
+pip install https://github.com/lpenguin/trename/archive/master.zip
+```
 ## Getting help
 ```bash
+> trename -h
 usage: trename [-h] [-v] [-n] [-D] from_tpl to_tpl [files [files ...]]
 
 positional arguments:
