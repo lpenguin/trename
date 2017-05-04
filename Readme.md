@@ -2,7 +2,7 @@
 
 ## Examples
 ```bash
->  ls -1                                                                                                                                                                        18:01:47
+>  ls -1
 16043_ACAGTG_R1_boston.txt
 16045_ACTTGA_R1_boston.txt
 16046_ATTCCT_R1_boston.txt
