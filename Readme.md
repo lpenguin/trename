@@ -7,10 +7,10 @@
 16045_ACTTGA_R1_boston.txt
 16046_ATTCCT_R1_boston.txt
 16047_ATGTCA_R1_boston.txt
-16048_ATTCCT_R1_boston.txt
-16050_GTGGCC_R1_texas.txt
-16051_ACTGAT_R1_texas.txt
-16052_ACAGTG_R1_texas.txt
+16048_ATTCCT_R2_boston.txt
+16050_GTGGCC_R2_texas.txt
+16051_ACTGAT_R2_texas.txt
+16052_ACAGTG_R2_texas.txt
 
 
 > trename '{sample}_{readno}_{subid}.txt' '{sample}_{subid}_{readno}.txt' *.txt
@@ -19,10 +19,10 @@
 16045_ACTTGA_boston_R1.txt
 16046_ATTCCT_boston_R1.txt
 16047_ATGTCA_boston_R1.txt
-16048_ATTCCT_boston_R1.txt
-16050_GTGGCC_boston_R1.txt
-16051_ACTGAT_boston_R1.txt
-16052_ACAGTG_boston_R1.txt
+16048_ATTCCT_boston_R2.txt
+16050_GTGGCC_boston_R2.txt
+16051_ACTGAT_boston_R2.txt
+16052_ACAGTG_boston_R2.txt
 
 ```
 ## Installation
