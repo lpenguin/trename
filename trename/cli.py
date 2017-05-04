@@ -1,42 +1,51 @@
 import argparse
-from trename.trename import new_name, to_re_in, to_re_out
+from trename import trename
 from os import rename
-import sys
 
 
 def main():
-    p = argparse.ArgumentParser()
-    p.add_argument('-v', '--verbose', action='store_true')
-    p.add_argument('-n', '--dry-run', action='store_true')
-    p.add_argument('-D', '--debug', action='store_true')
-    p.add_argument('from_tpl')
-    p.add_argument('to_tpl')
-    p.add_argument('files', nargs='*')
+    p = argparse.ArgumentParser(prog='trename')
+    p.add_argument('-v', '--verbose', action='store_true', help='Print old name and new name for each file ')
+    p.add_argument('-n', '--dry-run', action='store_true', help='Print names, do not actually rename')
+    p.add_argument('-D', '--debug', action='store_true', help='Print debug information')
+    p.add_argument('from_tpl', help='Template for old file name')
+    p.add_argument('to_tpl', help='Template for new file name')
+    p.add_argument('files', nargs='*', help='Files that will be renamed')
 
     args = p.parse_args()
 
     if args.debug:
-        re_in = to_re_in(args.from_tpl)
-        re_out = to_re_out(args.to_tpl)
+        re_in = trename.to_re_in(args.from_tpl)
+        re_out = trename.to_re_out(args.to_tpl)
         print('Regexp from: "{}"\nRegexp to:   "{}"'.format(re_in, re_out))
 
+    try:
+        trename.validate_patterns(args.from_tpl, args.to_tpl)
+    except trename.IdentifiersNotFound as ex:
+        print("Invalid pattern: identifiers not found in from_tpl: {}".format(
+            ', '.join(ex.identifiers)
+        ))
+
     for filename in args.files:
-        to_filename = new_name(filename, args.from_tpl, args.to_tpl)
         if args.debug:
             print("Trying: "+filename)
-        if to_filename is not None:
-            if args.dry_run:
-                print("{filename} will be renamed to {to_filename}".format(
+        try:
+            to_filename = trename.new_name(filename, args.from_tpl, args.to_tpl)
+        except trename.NoMatchException:
+            continue
+
+        if args.dry_run:
+            print("{filename} will be renamed to {to_filename}".format(
+                filename=filename,
+                to_filename=to_filename,
+            ))
+        else:
+            rename(filename, to_filename)
+            if args.verbose:
+                print("{filename} renamed to {to_filename}".format(
                     filename=filename,
                     to_filename=to_filename,
                 ))
-            else:
-                rename(filename, to_filename)
-                if args.verbose:
-                    print("{filename} renamed to {to_filename}".format(
-                        filename=filename,
-                        to_filename=to_filename,
-                    ))
 
 
 if __name__ == '__main__':
