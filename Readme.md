@@ -27,9 +27,11 @@
 ```
 ## Installation
 ```bash
-python setup.py install
-# or
 pip install https://github.com/lpenguin/trename/archive/master.zip
+# or
+git clone https://github.com/lpenguin/trename
+cd trename
+python setup.py install
 ```
 ## Getting help
 ```bash
