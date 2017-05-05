@@ -41,7 +41,7 @@ usage: trename [-h] [-v] [-n] [-D] from_tpl to_tpl [files [files ...]]
 positional arguments:
   from_tpl       template for old file name
   to_tpl         template for new file name
-  files          tiles that will be renamed
+  files          files that will be renamed
 
 optional arguments:
   -h, --help     show this help message and exit
