@@ -21,31 +21,30 @@ def main():
 
     try:
         trename.validate_patterns(args.from_tpl, args.to_tpl)
+        for filename in args.files:
+            if args.debug:
+                print("Trying: " + filename)
+            try:
+                to_filename = trename.new_name(filename, args.from_tpl, args.to_tpl)
+            except trename.NoMatchException:
+                continue
+
+            if args.dry_run:
+                print("{filename} will be renamed to {to_filename}".format(
+                    filename=filename,
+                    to_filename=to_filename,
+                ))
+            else:
+                rename(filename, to_filename)
+                if args.verbose:
+                    print("{filename} renamed to {to_filename}".format(
+                        filename=filename,
+                        to_filename=to_filename,
+                    ))
     except trename.IdentifiersNotFound as ex:
         print("Invalid pattern: identifiers not found in from_tpl: {}".format(
             ', '.join(ex.identifiers)
         ))
-
-    for filename in args.files:
-        if args.debug:
-            print("Trying: "+filename)
-        try:
-            to_filename = trename.new_name(filename, args.from_tpl, args.to_tpl)
-        except trename.NoMatchException:
-            continue
-
-        if args.dry_run:
-            print("{filename} will be renamed to {to_filename}".format(
-                filename=filename,
-                to_filename=to_filename,
-            ))
-        else:
-            rename(filename, to_filename)
-            if args.verbose:
-                print("{filename} renamed to {to_filename}".format(
-                    filename=filename,
-                    to_filename=to_filename,
-                ))
 
 
 if __name__ == '__main__':
