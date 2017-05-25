@@ -1,3 +1,5 @@
+from __future__ import absolute_import, print_function
+
 import argparse
 from trename import trename
 from os import rename
